@@ -27,7 +27,7 @@ jobs:
         run: for f in src/main/resources/static/assets/js/*.js; do node --check "$f"; done
       - name: Upload test reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: surefire-reports-h2
           path: target/surefire-reports
@@ -65,7 +65,7 @@ jobs:
         run: ./mvnw -B verify
       - name: Upload test reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: surefire-reports-mysql
           path: target/surefire-reports
