@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leave & Requests — WorkPulse</title>
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/pages.css" />
+</head>
+<body>
+  <div class="page-header">
+    <div class="page-header-left">
+      <h2 class="page-title">Leave & Requests</h2>
+      <p class="page-subtitle">Apply for leave, track decisions and review your team’s requests.</p>
+    </div>
+    <div class="page-header-actions"><button class="btn btn-primary" id="btn-apply">Apply for leave</button></div>
+  </div>
+  <div class="alert alert-error" id="page-error" role="alert" hidden></div>
+
+  <div class="leave-balance-grid" id="balance-grid" style="margin-bottom:var(--space-5)"></div>
+  <div class="tabs-nav" role="tablist" id="tabs"></div>
+  <div class="tab-panel" id="tab-mine" role="tabpanel">
+    <div class="card">
+      <div class="table-toolbar"><div class="table-toolbar-left">
+        <select class="form-control table-filter" id="m-status" aria-label="Filter by status">
+          <option value="">All statuses</option><option value="PENDING">Pending</option><option value="APPROVED">Approved</option>
+          <option value="REJECTED">Rejected</option><option value="CANCELLED">Cancelled</option>
+        </select>
+      </div></div>
+      <div class="table-wrapper"><table class="table"><thead><tr><th>Type</th><th>From</th><th>To</th><th>Days</th><th>Reason</th><th>Status</th><th>Decision</th><th>Actions</th></tr></thead><tbody id="my-body"></tbody></table></div>
+    <div class="pagination" id="my-pager"></div>
+    </div>
+  </div>
+  <div class="tab-panel" id="tab-review" role="tabpanel">
+    <div class="card">
+      <div class="table-toolbar"><div class="table-toolbar-left">
+        <select class="form-control table-filter" id="rv-status" aria-label="Filter by status">
+          <option value="PENDING">Pending</option><option value="APPROVED">Approved</option><option value="REJECTED">Rejected</option><option value="">All</option>
+        </select>
+      </div></div>
+      <div class="table-wrapper"><table class="table"><thead><tr><th>Employee</th><th>Type</th><th>From</th><th>To</th><th>Days</th><th>Reason</th><th>Status</th><th>Actions</th></tr></thead><tbody id="rv-body"></tbody></table></div>
+    <div class="pagination" id="rv-pager"></div>
+    </div>
+  </div>
+
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/auth.js"></script>
+  <script src="/assets/js/ui.js"></script>
+  <script src="/assets/js/layout.js"></script>
+  <script src="/assets/js/leaves.js"></script>
+</body>
+</html>

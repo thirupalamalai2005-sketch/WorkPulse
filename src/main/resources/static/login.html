@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — WorkPulse</title>
+  <meta name="description" content="WorkPulse – People Operations, in Sync" />
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/pages.css" />
+</head>
+<body class="login-page">
+
+  <!-- ═══════════════════════════════════════════════════
+       LOGIN PAGE LAYOUT
+       ═══════════════════════════════════════════════════ -->
+  <div class="login-container">
+
+    <!-- LEFT: Brand Panel -->
+    <div class="login-brand-panel">
+      <!-- Logo -->
+      <div class="login-brand-logo">
+        <div class="login-brand-icon">WP</div>
+        <span class="login-brand-name">WorkPulse</span>
+      </div>
+
+      <!-- Center content -->
+      <div class="login-brand-center">
+        <h2 class="login-brand-headline">
+          Workforce Operations,<br />
+          <span>Perfectly in Sync</span>
+        </h2>
+        <p class="login-brand-desc">
+          A unified platform to manage employees, track attendance,
+          handle leave requests, and stay on top of your entire workforce —
+          all in one place.
+        </p>
+
+        <div class="login-features">
+          <div class="login-feature">
+            <div class="login-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 16 11 18 15 14"/></svg>
+            </div>
+            <span class="login-feature-text">Smart attendance tracking with check-in / check-out</span>
+          </div>
+          <div class="login-feature">
+            <div class="login-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 3s-3 3-7.5 3S6 3 6 3 3 6 3 10.5C3 17 9 21 12 21s9-4 9-10.5C21 6 21 3 21 3z"/></svg>
+            </div>
+            <span class="login-feature-text">Leave management with manager approval workflow</span>
+          </div>
+          <div class="login-feature">
+            <div class="login-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+            <span class="login-feature-text">Role-based access for Admins, Managers and Employees</span>
+          </div>
+          <div class="login-feature">
+            <div class="login-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
+            </div>
+            <span class="login-feature-text">Full audit logs and real-time notifications</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="login-brand-footer">
+        &copy; 2026 WorkPulse &mdash; All rights reserved.
+      </div>
+    </div>
+
+    <!-- RIGHT: Login Form Panel -->
+    <div class="login-form-panel">
+      <div class="login-form-inner">
+
+        <!-- Form header -->
+        <div class="login-form-header">
+          <h1 class="login-form-title">Welcome back</h1>
+          <p class="login-form-subtitle">Sign in to your WorkPulse account</p>
+        </div>
+
+        
+        <!-- Error alert -->
+        <div class="alert alert-error mb-4" id="login-error" style="display:none" role="alert" aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span id="login-error-text"></span>
+        </div>
+
+        <!-- Login form -->
+        <form id="login-form" novalidate>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label" for="email">
+              Email address <span class="required" aria-hidden="true">*</span>
+            </label>
+            <div class="input-group">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                placeholder="you@company.com"
+                autocomplete="username email"
+                aria-required="true"
+                aria-describedby="email-error"
+              />
+            </div>
+            <p class="form-error" id="email-error" role="alert" aria-live="polite"></p>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-1)">
+              <label class="form-label" for="password" style="margin-bottom:0">
+                Password <span class="required" aria-hidden="true">*</span>
+              </label>
+            </div>
+            <div class="input-group">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+              </svg>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control has-action"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                aria-required="true"
+                aria-describedby="password-error"
+              />
+              <button
+                type="button"
+                class="input-action"
+                id="toggle-password"
+                aria-label="Show password"
+                title="Show/hide password"
+              >
+                <!-- Eye icon — shown when password is hidden -->
+                <svg id="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+                <!-- Eye-off icon — shown when password is visible -->
+                <svg id="eye-off-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="display:none">
+                  <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/>
+                  <line x1="1" y1="1" x2="23" y2="23"/>
+                </svg>
+              </button>
+            </div>
+            <p class="form-error" id="password-error" role="alert" aria-live="polite"></p>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="login-btn">
+            Sign in
+          </button>
+        </form>
+
+        <!-- Footer note -->
+        <p class="login-form-footer-text" id="register-link-row" hidden>
+          No account yet? <a href="/register.html">Create one</a>
+        </p>
+        <p class="login-form-footer-text">
+          Secured by WorkPulse &mdash; All activity is logged and audited
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast container (auto-injected by api.js) -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts (order matters) -->
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/auth.js"></script>
+  <script src="/assets/js/validators.js"></script>
+  <script src="/assets/js/login.js"></script>
+</body>
+</html>

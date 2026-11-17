@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — WorkPulse</title>
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/pages.css" />
+</head>
+<body>
+  <div class="page-header">
+    <div class="page-header-left">
+      <h2 class="page-title">Dashboard</h2>
+      <p class="page-subtitle">Live figures calculated from your organisation’s records.</p>
+    </div>
+    <div class="page-header-actions"></div>
+  </div>
+  <div class="alert alert-error" id="page-error" role="alert" hidden></div>
+
+  <section id="workforce-section" hidden>
+    <h3 class="card-title" id="workforce-title" style="margin-bottom:var(--space-3)">Workforce today</h3>
+    <div class="stats-grid" id="workforce-stats"></div>
+  </section>
+  <section style="margin-top:var(--space-6)">
+    <h3 class="card-title" style="margin-bottom:var(--space-3)">My overview</h3>
+    <div class="stats-grid" id="personal-stats"></div>
+  </section>
+  <div class="dashboard-grid" style="margin-top:var(--space-6)">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">My leave balances (this year)</h3><a class="btn btn-sm btn-secondary" href="/leaves.html">Apply</a></div>
+      <div class="card-body"><div class="leave-balance-grid" id="balance-grid"></div></div>
+    </div>
+    <div class="card" id="activity-card" hidden>
+      <div class="card-header"><h3 class="card-title">Recent activity</h3><a class="btn btn-sm btn-secondary" href="/audit-logs.html">View all</a></div>
+      <div class="card-body"><ul class="activity-list" id="activity-list"></ul></div>
+    </div>
+  </div>
+
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/auth.js"></script>
+  <script src="/assets/js/ui.js"></script>
+  <script src="/assets/js/layout.js"></script>
+  <script src="/assets/js/dashboard.js"></script>
+</body>
+</html>

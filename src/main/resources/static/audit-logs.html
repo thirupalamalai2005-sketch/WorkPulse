@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audit Logs — WorkPulse</title>
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/pages.css" />
+</head>
+<body>
+  <div class="page-header">
+    <div class="page-header-left">
+      <h2 class="page-title">Audit Logs</h2>
+      <p class="page-subtitle">Read-only record of security and business events.</p>
+    </div>
+    <div class="page-header-actions"></div>
+  </div>
+  <div class="alert alert-error" id="page-error" role="alert" hidden></div>
+
+  <div class="card">
+    <div class="table-toolbar"><div class="table-toolbar-left">
+      <input type="text" class="form-control table-filter" id="a-action" placeholder="Action (e.g. LEAVE_APPROVED)" aria-label="Action" />
+      <input type="text" class="form-control table-filter" id="a-actor" placeholder="Actor e-mail" aria-label="Actor" />
+      <input type="text" class="form-control table-filter" id="a-type" placeholder="Resource type" aria-label="Resource type" />
+      <input type="date" class="form-control table-filter" id="a-from" aria-label="From date" />
+      <input type="date" class="form-control table-filter" id="a-to" aria-label="To date" />
+      <button class="btn btn-primary btn-sm" id="a-apply" type="button">Filter</button>
+      <button class="btn btn-secondary btn-sm" id="a-clear" type="button">Clear</button>
+    </div></div>
+    <div class="table-wrapper"><table class="table"><thead><tr><th>Time</th><th>Actor</th><th>Action</th><th>Resource</th><th>Details</th><th>IP</th></tr></thead><tbody id="audit-body"></tbody></table></div>
+    <div class="pagination" id="audit-pager"></div>
+  </div>
+
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/auth.js"></script>
+  <script src="/assets/js/ui.js"></script>
+  <script src="/assets/js/layout.js"></script>
+  <script src="/assets/js/audit-logs.js"></script>
+</body>
+</html>

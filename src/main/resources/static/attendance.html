@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attendance — WorkPulse</title>
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/pages.css" />
+</head>
+<body>
+  <div class="page-header">
+    <div class="page-header-left">
+      <h2 class="page-title">Attendance</h2>
+      <p class="page-subtitle">Check in and out, review history and request corrections.</p>
+    </div>
+    <div class="page-header-actions"></div>
+  </div>
+  <div class="alert alert-error" id="page-error" role="alert" hidden></div>
+
+  <div class="checkin-card">
+    <div>
+      <div class="checkin-time-display" id="clock-display">--:--:--</div>
+      <div class="checkin-date" id="clock-date-display"></div>
+    </div>
+    <div class="checkin-actions">
+      <div style="display:flex;gap:12px">
+        <button class="btn btn-success btn-lg" id="btn-checkin" disabled>Check in</button>
+        <button class="btn btn-secondary btn-lg" id="btn-checkout" disabled>Check out</button>
+      </div>
+      <span class="text-xs text-muted" id="clock-status-msg">Loading status…</span>
+    </div>
+  </div>
+
+  <div class="tabs-nav" role="tablist" id="tabs"></div>
+
+  <div class="tab-panel" id="tab-mine" role="tabpanel">
+    <div class="stats-grid" id="my-summary"></div>
+    <div class="card" style="margin-top:var(--space-4)">
+      <div class="table-toolbar"><div class="table-toolbar-left">
+        <label class="text-xs text-muted" for="h-from">From</label><input type="date" class="form-control table-filter" id="h-from" />
+        <label class="text-xs text-muted" for="h-to">To</label><input type="date" class="form-control table-filter" id="h-to" />
+        <button class="btn btn-secondary btn-sm" data-range="week" type="button">This week</button>
+        <button class="btn btn-secondary btn-sm" data-range="month" type="button">This month</button>
+        <button class="btn btn-primary btn-sm" id="h-apply" type="button">Apply</button>
+      </div></div>
+      <div class="table-wrapper"><table class="table"><thead><tr><th>Date</th><th>Check in</th><th>Check out</th><th>Worked</th><th>Status</th><th>Source</th></tr></thead><tbody id="hist-body"></tbody></table></div>
+    <div class="pagination" id="hist-pager"></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-corr" role="tabpanel">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">My correction requests</h3><button class="btn btn-primary btn-sm" id="btn-corr">Request correction</button></div>
+      <div class="table-wrapper"><table class="table"><thead><tr><th>Date</th><th>Requested in</th><th>Requested out</th><th>Reason</th><th>Status</th><th>Reviewer note</th></tr></thead><tbody id="corr-body"></tbody></table></div>
+    <div class="pagination" id="corr-pager"></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-roster" role="tabpanel">
+    <div class="card">
+      <div class="table-toolbar"><div class="table-toolbar-left">
+        <label class="text-xs text-muted" for="r-date">Date</label><input type="date" class="form-control table-filter" id="r-date" />
+      </div></div>
+      <div class="table-wrapper"><table class="table"><thead><tr><th>Employee</th><th>Department</th><th>Status</th><th>Check in</th><th>Check out</th></tr></thead><tbody id="roster-body"></tbody></table></div>
+    <div class="pagination" id="roster-pager"></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-review" role="tabpanel">
+    <div class="card">
+      <div class="table-toolbar"><div class="table-toolbar-left">
+        <select class="form-control table-filter" id="rv-status" aria-label="Status">
+          <option value="PENDING">Pending</option><option value="APPROVED">Approved</option><option value="REJECTED">Rejected</option><option value="">All</option>
+        </select>
+      </div></div>
+      <div class="table-wrapper"><table class="table"><thead><tr><th>Employee</th><th>Date</th><th>Requested in</th><th>Requested out</th><th>Reason</th><th>Status</th><th>Actions</th></tr></thead><tbody id="rv-body"></tbody></table></div>
+    <div class="pagination" id="rv-pager"></div>
+    </div>
+  </div>
+
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/auth.js"></script>
+  <script src="/assets/js/ui.js"></script>
+  <script src="/assets/js/layout.js"></script>
+  <script src="/assets/js/attendance.js"></script>
+</body>
+</html>
