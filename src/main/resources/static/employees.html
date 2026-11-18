@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employees — WorkPulse</title>
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/pages.css" />
+</head>
+<body>
+  <div class="page-header">
+    <div class="page-header-left">
+      <h2 class="page-title">Employees</h2>
+      <p class="page-subtitle">Search the directory. Administrators can manage accounts.</p>
+    </div>
+    <div class="page-header-actions"><button class="btn btn-primary" id="btn-add" hidden>Add employee</button></div>
+  </div>
+  <div class="alert alert-error" id="page-error" role="alert" hidden></div>
+
+  <div class="card">
+    <div class="table-toolbar">
+      <div class="table-toolbar-left">
+        <input type="search" class="form-control table-search" id="f-q" placeholder="Search name, email or code" aria-label="Search employees" />
+        <select class="form-control table-filter" id="f-dept" aria-label="Filter by department"></select>
+        <select class="form-control table-filter" id="f-status" aria-label="Filter by status" hidden>
+          <option value="">All statuses</option><option value="ACTIVE">Active</option><option value="INACTIVE">Inactive</option>
+        </select>
+        <select class="form-control table-filter" id="f-sort" aria-label="Sort by">
+          <option value="name">Sort: Name</option><option value="code">Sort: Code</option>
+          <option value="department">Sort: Department</option><option value="joinDate">Sort: Join date</option>
+        </select>
+        <button class="btn btn-secondary btn-sm" id="btn-dir" type="button" aria-label="Toggle sort direction">A→Z</button>
+      </div>
+    </div>
+    <div class="table-wrapper"><table class="table"><thead><tr><th>Code</th><th>Employee</th><th>Department</th><th>Designation</th><th>Manager</th><th>Status</th><th>Actions</th></tr></thead><tbody id="emp-body"></tbody></table></div>
+    <div class="pagination" id="emp-pager"></div>
+  </div>
+
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/auth.js"></script>
+  <script src="/assets/js/ui.js"></script>
+  <script src="/assets/js/layout.js"></script>
+  <script src="/assets/js/employees.js"></script>
+</body>
+</html>

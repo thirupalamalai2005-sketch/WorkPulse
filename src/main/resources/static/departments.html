@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Departments — WorkPulse</title>
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/pages.css" />
+</head>
+<body>
+  <div class="page-header">
+    <div class="page-header-left">
+      <h2 class="page-title">Departments</h2>
+      <p class="page-subtitle">Create departments and keep employee assignments tidy.</p>
+    </div>
+    <div class="page-header-actions"><button class="btn btn-primary" id="btn-add">Add department</button></div>
+  </div>
+  <div class="alert alert-error" id="page-error" role="alert" hidden></div>
+
+  <div class="card"><div class="table-wrapper"><table class="table"><thead><tr><th>Name</th><th>Description</th><th>Employees</th><th>Actions</th></tr></thead><tbody id="dept-body"></tbody></table></div></div>
+
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/auth.js"></script>
+  <script src="/assets/js/ui.js"></script>
+  <script src="/assets/js/layout.js"></script>
+  <script src="/assets/js/departments.js"></script>
+</body>
+</html>

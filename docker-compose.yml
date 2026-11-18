@@ -1,0 +1,41 @@
+# docker compose up --build        (requires a .env file - copy .env.example)
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_NAME:-workpulse_db}
+      MYSQL_USER: ${DB_USERNAME:?set DB_USERNAME in .env}
+      MYSQL_PASSWORD: ${DB_PASSWORD:?set DB_PASSWORD in .env}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?set MYSQL_ROOT_PASSWORD in .env}
+    volumes:
+      - workpulse-db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    environment:
+      DB_HOST: db
+      DB_NAME: ${DB_NAME:-workpulse_db}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_ALLOW_PUBLIC_KEY_RETRIEVAL: "true"   # needed for MySQL 8 caching_sha2 auth on the private compose network
+      WORKPULSE_ADMIN_EMAIL: ${WORKPULSE_ADMIN_EMAIL:-}
+      WORKPULSE_ADMIN_NAME: ${WORKPULSE_ADMIN_NAME:-System Administrator}
+      WORKPULSE_ADMIN_PASSWORD: ${WORKPULSE_ADMIN_PASSWORD:-}
+      APP_TIMEZONE: ${APP_TIMEZONE:-Asia/Kolkata}
+      REGISTRATION_ENABLED: ${REGISTRATION_ENABLED:-false}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+
+volumes:
+  workpulse-db:

@@ -1,0 +1,32 @@
+# Build output
+target/
+*.class
+*.jar
+*.war
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+*.swp
+
+# Secrets & local configuration - NEVER commit these
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+application-local.properties
+
+# Logs, dumps, OS files
+*.log
+logs/
+*.sql.gz
+*.dump
+backups/
+.DS_Store
+Thumbs.db
+node_modules/
