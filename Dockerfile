@@ -7,7 +7,7 @@ COPY src ./src
 RUN mvn -B -q -DskipTests package
 
 # ---- runtime stage (non-root, no build tools)
-FROM eclipse-temurin:17-jre
+FROM eclipse-temurin:25-jre
 RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/* \
     && useradd --system --uid 10001 workpulse
 WORKDIR /app
